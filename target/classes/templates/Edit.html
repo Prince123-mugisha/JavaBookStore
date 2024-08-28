@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Book Information</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: 1px solid black;
+      height: 50px;
+    }
+    .form-group input[type="submit"] {
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 150px;
+    }
+    .form-group input[type="submit"]:hover {
+      background-color: black;
+    }
+
+    @media (max-width: 500px) {
+      .form-container {
+        padding: 15px;
+        max-width: 70%;
+      }
+    }
+
+    /* For devices with a viewport width of 480px or less */
+    @media (max-width: 300px) {
+      .form-group input {
+        height: 40px; /* Slightly shorter input fields for smaller screens */
+      }
+
+      .form-group input[type="submit"] {
+        width: 70%; /* Make the submit button full-width on very small screens */
+        height: 45px; /* Adjust button height for better touch target */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Edit Book Information</h2>
+  <form th:action="@{/save}" method="post" th:object="${book}">
+    <input type="hidden" name="id" th:value="${book.id}">
+    <div class="form-group">
+      <label for="bookName">Name:</label>
+      <input type="text" id="bookName" name="name" th:value="${book.name}" required>
+    </div>
+    <div class="form-group">
+      <label for="bookAuthor">Author:</label>
+      <input type="text" id="bookAuthor" name="author" th:value="${book.author}" required>
+    </div>
+    <div class="form-group">
+      <label for="bookPrice">Price:</label>
+      <input type="number" id="bookPrice" name="price" step="0.01" th:value="${book.price}" required>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: ghostwhite;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .navbar-left, .navbar-right {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar-left li, .navbar-right li {
+            margin: 0 10px;
+        }
+
+        .navbar-left a, .navbar-right a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            display: block;
+        }
+
+        .navbar-left a:hover, .navbar-right a:hover {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-left, .navbar-right {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar-left li, .navbar-right li {
+                margin: 5px 0;
+            }
+
+            .navbar-right {
+                margin-top: 10px;
+                align-items: flex-end;
+            }
+        }
+
+        .Logo a {
+            color: white; /* Set text color to white */
+            font-weight: bold; /* Make the text bold */
+            text-decoration: none; /* Remove underline from the link */
+        }
+        .text {
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+
+        .text h1 {
+            margin: 0;
+            font-size:20px;
+            color: #333;
+        }
+
+        .text h6 {
+            margin-top: 10px;
+            font-size: 1rem; /* Font size for h6 */
+            color: #666;
+            font-weight: normal;
+        }
+
+        @media (max-width: 768px) {
+            .text {
+                padding: 30px;
+            }
+
+            .text h1 {
+                font-size: 2rem;
+            }
+
+            .text h6 {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+     <div class="Logo">
+         <a href="#">Book store</a>
+     </div>
+    <ul class="navbar-left">
+        <li><a href="/">Home</a></li>
+        <li><a href="available-book">Available Book</a></li>
+        <li><a href="my-book">My Book</a></li>
+    </ul>
+    <ul class="navbar-right">
+        <li><a href="book-register">New Book Register</a></li>
+    </ul>
+</nav>
+
+<div class="text">
+
+    <h1>WELCOME TO OUR BOOK STORE</h1>
+    <h6>
+
+
+        Books are gateways to endless worlds and experiences. They offer a profound escape from daily life,
+        immersing readers in diverse realms of knowledge, adventure, and imagination. Each page turned is a step into a new perspective,
+        whether it's exploring historical epochs, unraveling thrilling mysteries, or discovering timeless wisdom. Books stimulate the mind, nurture creativity,
+        and foster empathy by allowing readers to live through the eyes of others. They are cherished companions,
+        preserving stories and insights across generations. In an era of rapid change, books remain a steadfast source of comfort, enlightenment, and inspiration.</h6>
+    <img src="/image/picture.jpg" width="360" alt="Book Store Image" />
+
+</div>
+</body>
+</html>

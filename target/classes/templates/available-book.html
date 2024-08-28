@@ -1,0 +1,211 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Example</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: ghostwhite;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+    }
+
+    .navbar-left, .navbar-right {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .navbar-left li, .navbar-right li {
+      margin: 0 10px;
+    }
+
+    .navbar-left a, .navbar-right a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 12px;
+      display: block;
+    }
+
+    .navbar-left a:hover, .navbar-right a:hover {
+      background-color: #555;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-left, .navbar-right {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .navbar-left li, .navbar-right li {
+        margin: 5px 0;
+      }
+
+      .navbar-right {
+        margin-top: 10px;
+        align-items: flex-end;
+      }
+    }
+
+    .Logo a {
+      color: white; /* Set text color to white */
+      font-weight: bold; /* Make the text bold */
+      text-decoration: none; /* Remove underline from the link */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #e0e0e0;
+    }
+    .action-btn {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .view-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .edit-btn {
+      background-color: #FFC107;
+      color: white;
+    }
+    .edit-btn a {
+      text-decoration: none;
+      color: white;
+    }
+    .delete-btn {
+      background-color: #F44336;
+      color: white;
+    }
+    .delete-btn a{
+      text-decoration: none;
+      color: white;
+    }
+    .action-btn:hover {
+      opacity: 0.8;
+    }
+    .add_book {
+      background-color: black;
+      border: none;
+      border-radius: 4px;
+      height: 27px;
+    }
+    .add_book a{
+      text-decoration: none;
+      color: white;
+    }
+
+    @media (max-width: 300px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar-left, .navbar-right {
+        flex-direction: column;
+        width: 70%;
+      }
+
+      .navbar-left li, .navbar-right li {
+        margin: 5px 0;
+      }
+
+      .navbar-right {
+        margin-top: 10px;
+        align-items: flex-start;
+      }
+    }
+
+    /* For devices with a viewport width of 480px or less */
+    @media (max-width: 200px) {
+      .navbar-left, .navbar-right {
+        font-size: 14px;
+      }
+
+      .navbar-left a, .navbar-right a {
+        padding: 6px 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="Logo">
+    <a href="#">Book store</a>
+  </div>
+  <ul class="navbar-left">
+    <li><a href="/">Home</a></li>
+    <li><a href="available-book">Available Book</a></li>
+    <li><a href="my-book">My Book</a></li>
+  </ul>
+  <ul class="navbar-right">
+    <li><a href="book-register">New Book Register</a></li>
+  </ul>
+</nav>
+<h2>Book List Available</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name of the Book</th>
+    <th>Author</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Iterate over bookList and create a table row for each book -->
+  <tr th:each="b:${books}">
+    <td th:text="${b.id}"></td>
+    <td th:text="${b.name}"></td>
+    <td th:text="${b.author}"></td>
+    <td th:text="${b.price}"></td>
+    <td>
+      <button class="action-btn edit-btn"><a th:href="@{/editBook/{id}(id=${b.id})}">Edit</a></button>
+      <button class="action-btn delete-btn"><a th:href="@{/delete/{id}(id=${b.id})}">Delete</a></button>
+      <button class="add_book"><a th:href="@{/my-book/{id}(id=${b.id})}">add to my book</a></button>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
